@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class</title>
+</head>
+<body>
+    xây dựng lớp mô tả hình chữ nhật
+     <p>
+         <span>Chiều Rộng :</span>
+         <span><input id="chieuRong" type="text"></span>
+     </p>
+    <p>
+        <span>Chiều Dài:</span>
+        <span><input type="text" id="chieuDai"></span>
+        <button type="button" onclick="display()">Khỏi Tạo</button>
+
+    </p>
+    <canvas id="hienThi" width="" height=""></canvas>
+    <p id="ketQua"></p>
+    <script>
+
+        function thongSo(x,y,dai,rong) {
+            this.x=x,
+            this.y=y,
+            this.dai=dai,
+            this.rong=rong,
+            this.chuvi=function () {
+                return rong*2+dai*2;
+            },
+            this.dienTich=function () {
+                return dai*rong;
+            }
+
+        }
+        function thucHien() {
+            let hinhVe = document.getElementById("hienThi").getContext("2d");
+            let dai = document.getElementById("chieuDai").value;
+            let rong = document.getElementById("chieuRong").value;
+            let thongSo1 = new thongSo(0, 0, dai, rong);
+            hinhVe.fillStyle = "#3DFF11";
+            hinhVe.fillRect(thongSo1.x, thongSo1.y, thongSo1.dai, thongSo1.rong);
+            hinhVe.fill();
+            document.getElementById("ketQua").innerHTML="Chu vi hình chữ nhật là "+thongSo1.chuvi()+"<br>"+
+                "Diện tích hình chữ nhật là "+thongSo1.dienTich();
+        }
+        function display() {
+           thucHien();
+        }
+    </script>
+
+</body>
+</html>
